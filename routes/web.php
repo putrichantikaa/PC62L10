@@ -68,3 +68,4 @@ Route::get('/dosen', function () {
 Route::get('/galeri', function () {
     return view('data.galeri');
 });
+
