@@ -50,7 +50,7 @@ Route::get('/', function () {
 //     return view('mahasiswa',compact('nama','nilai','nilai2'));
 // });
 
-Route::get('/master', function () {
+Route::get('/', function () {
     $data_mhs = ["Abdul","Adha","Aidil","Alif","Asfal"];
     return view('layout.master',compact('data_mhs'));
 });
@@ -69,3 +69,7 @@ Route::get('/galeri', function () {
     return view('data.galeri');
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
