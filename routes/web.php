@@ -15,7 +15,7 @@ use App\Http\Controllers\dosenController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // Route::get('/cth', function () {
@@ -73,8 +73,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Data Dosen
 Route::get('/dosen', [dosenController::class, 'index']);
-Route::get('/dosen/form', [dosenController::class, 'create']);
+Route::get('/dosen/tambah', [dosenController::class, 'create']);
+Route::post('/dosen/', [dosenController::class, 'store']);
