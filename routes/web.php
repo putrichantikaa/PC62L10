@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dosenController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,7 @@ use App\Http\Controllers\dosenController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
 });
 
@@ -70,12 +71,12 @@ Route::get('/', function () {
 //     return view('data.galeri');
 // });
 
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Data Dosen
 Route::get('/dosen', [dosenController::class, 'index']);
 Route::get('/dosen/tambah', [dosenController::class, 'create']);
-Route::post('/dosen/', [dosenController::class, 'store']);
+Route::post('/dosen', [dosenController::class, 'store']);
+Route::get('/dosen/edit/{id}', [dosenController::class, 'edit']);
