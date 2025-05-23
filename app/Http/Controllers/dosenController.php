@@ -12,8 +12,11 @@ class dosenController extends Controller
      */
     public function index()
     {
-        //menampilkan data dosen
-        return view('Dosen.index');
+        // menampilkan data dosen
+        $nomor = 1;
+        $dosen = Dosen::all();
+        return view('Dosen.index',compact('dosen','nomor'));
+
     }
 
     /**
@@ -21,7 +24,7 @@ class dosenController extends Controller
      */
     public function create()
     {
-        //menampilkan form tambah
+        // menampilkan form tambah
         return view('Dosen.form');
     }
 
@@ -30,8 +33,8 @@ class dosenController extends Controller
      */
     public function store(Request $request)
     {
-        //proses tambah
-        $dosen =new Dosen;
+        // proses tambah
+        $dosen = new Dosen;
         $dosen->nidn = $request->nidn;
         $dosen->nama = $request->nama;
         $dosen->email = $request->email;
@@ -39,8 +42,7 @@ class dosenController extends Controller
         $dosen->nohp = $request->nohp;
         $dosen->save();
 
-        return redirect ('/dosen');
-
+        return redirect('/dosen');
     }
 
     /**
@@ -48,7 +50,7 @@ class dosenController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // menampilkan data detail
     }
 
     /**
@@ -56,7 +58,7 @@ class dosenController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // form edit
     }
 
     /**
@@ -64,7 +66,7 @@ class dosenController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // proses edit
     }
 
     /**
@@ -72,6 +74,6 @@ class dosenController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // proses hapus
     }
 }
