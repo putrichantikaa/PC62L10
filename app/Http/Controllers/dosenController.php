@@ -69,6 +69,15 @@ class dosenController extends Controller
     public function update(Request $request, string $id)
     {
         // proses edit
+        $dosen = Dosen::find($id);
+        $dosen->nidn = $request->nidn;
+        $dosen->nama = $request->nama;
+        $dosen->email = $request->email;
+        $dosen->rumpun = $request->rumpun;
+        $dosen->nohp = $request->nohp;
+        $dosen->save();
+
+        return redirect('/dosen');
     }
 
     /**
@@ -77,5 +86,9 @@ class dosenController extends Controller
     public function destroy(string $id)
     {
         // proses hapus
+        $dosen = Dosen::find($id);
+        $dosen->delete();
+
+        return redirect('/dosen');
     }
 }
